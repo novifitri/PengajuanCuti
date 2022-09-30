@@ -1,0 +1,77 @@
+﻿@model PengajuanCuti.Models.Karyawan
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Karyawan</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nama" class="control-label"></label>
+                <input asp-for="Nama" class="form-control" />
+                <span asp-validation-for="Nama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NIK" class="control-label"></label>
+                <input asp-for="NIK" class="form-control" />
+                <span asp-validation-for="NIK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jenis_Kelamin" class="control-label"></label>
+                <div class="radio">
+                    <label><input type="radio" asp-for="Jenis_Kelamin" name="jenis_kelamin" value="Laki - laki">Laki -laki</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" asp-for="Jenis_Kelamin" name="jenis_kelamin" value="Perempuan">Perempuan</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tanggal_Lahir" class="control-label"></label>
+                <input asp-for="Tanggal_Lahir" type="date" class="form-control" />
+                <span asp-validation-for="Tanggal_Lahir" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alamat" class="control-label"></label>
+                <input asp-for="Alamat" class="form-control" />
+                <span asp-validation-for="Alamat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nomor_Telp" class="control-label"></label>
+                <input asp-for="Nomor_Telp" class="form-control" />
+                <span asp-validation-for="Nomor_Telp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Divisi</label>
+                <select value="" class="form-control" asp-for="Divisi_Id">
+                    <option>Choose Division</option>
+                    @foreach (var division in (IEnumerable<Divisi>)ViewData["AllDivision"])
+                    {
+                        <option value=@division.Id>@division.Nama</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

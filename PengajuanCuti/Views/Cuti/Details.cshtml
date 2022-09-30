@@ -1,0 +1,60 @@
+﻿@model PengajuanCuti.Models.Cuti
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Cuti</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            Nama Karyawan
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Karyawan.Nama)
+        </dd>
+        <dt class = "col-sm-2">
+           Jenis Cuti
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.JenisCuti.Nama)
+        </dd>
+        <dt class = "col-sm-2">
+            Tanggal Mulai
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TanggalMulai)
+        </dd>
+        <dt class = "col-sm-2">
+            Tanggal Akhir
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TanggalAkhir)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Keterangan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Keterangan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+</div>

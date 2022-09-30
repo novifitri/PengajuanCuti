@@ -1,0 +1,45 @@
+﻿@model PengajuanCuti.Models.UserRole
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UserRole</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">User</label>
+                <select value="" class="form-control" asp-for="User_Id">
+                    <option>Choose User</option>
+                    @foreach (var data in (IEnumerable<Karyawan>)ViewData["AllKaryawan"])
+                    {
+                        <option value=@data.Id>@data.Nama</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Role</label>
+                <select value="" class="form-control" asp-for="Role_Id">
+                    <option>Choose Role</option>
+                    @foreach (var data in (IEnumerable<Role>)ViewData["AllRoles"])
+                    {
+                        <option value=@data.Id>@data.Nama</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

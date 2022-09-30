@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PengajuanCuti.Models.Cuti>
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "List Permohonan Cuti";
+}
+
+<h1>List Permohonan Cuti</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                Karyawan
+            </th>
+            <th>
+               Jenis Cuti
+            </th>
+            <th>
+               Tanggal Mulai
+            </th>
+            <th>
+                Tanggal Akhir
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Keterangan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Karyawan.Nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JenisCuti.Nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanggalMulai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanggalAkhir)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Keterangan)
+            </td>
+            <td>
+                @if (item.Status.ToString() == "ditolak")
+                {
+                     <span class="badge badge-danger">@Html.DisplayFor(modelItem => item.Status)</span>
+                }
+                else if (item.Status.ToString() == "disetujui")
+                {
+                    <span class="badge badge-success">@Html.DisplayFor(modelItem => item.Status)</span>
+                }
+                else
+                {
+                    <span class="badge badge-light"> @Html.DisplayFor(modelItem => item.Status)</span>
+                }
+            </td>
+            @if (Context.Session.GetString("Role").ToLower() == "member")
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Edit", "EditAdmin", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>

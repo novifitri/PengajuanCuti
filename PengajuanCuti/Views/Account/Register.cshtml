@@ -1,0 +1,100 @@
+﻿@model API.ViewModels.RegisterVM
+@{
+    Layout = null;
+    ViewData["Title"] = "Register";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Pengajuan Cuti</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="d-flex h-100 justify-content-center align-items-center" style="background-color: #e3f2fd;">
+        <div>
+            <h1>Create Account</h1>
+            <form method="post" asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label">Nama</label>
+                    <input name="nama" type="text" class="form-control" />
+                    <span asp-validation-for="Nama" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">NIK</label>
+                    <input name="nik" type="text" class="form-control" />
+                    <span asp-validation-for="NIK" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Jenis Kelamin</label>
+                    <div class="radio">
+                        <label><input type="radio" name="jenis_kelamin" value="Laki - laki">Laki -laki</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="jenis_kelamin" value="Perempuan">Perempuan</label>
+                    </div>
+                    <span asp-validation-for="Jenis_Kelamin" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Tanggal Lahir</label>
+                    <input type="date" class="form-control datepicker" />
+                    <span asp-validation-for="Tanggal_Lahir" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Alamat</label>
+                    <input class="form-control" name="Alamat" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nomor Telepon</label>
+                    <input class="form-control" name="Nomor_Telp" />
+                    <span asp-validation-for="Nomor_Telp" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Email</label>
+                    <input name="email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input name="password" type="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Divisi</label>
+                    <select value="" class="form-control" name="divisi_id">
+                        <option>Choose Division</option>
+                        @foreach (var division in (IEnumerable<Divisi>)ViewData["AllDivision"])
+                        {
+                            <option value=@division.Id>@division.Nama</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Role</label>
+                    <select value="" class="form-control" name="role_id">
+                        <option>Choose Role</option>
+                        @foreach (var role in (IEnumerable<Role>)ViewData["AllRoles"])
+                        {
+                            <option value=@role.Id>@role.Nama</option>
+                        }
+                    </select>
+                </div>
+                <a class="text-success d-block" asp-controller="Account" asp-action="Login">Sudah punya akun? Masuk disini</a>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+﻿@model PengajuanCuti.Models.Cuti
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Cuti</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Jenis Cuti</label>
+                <select class="form-control" asp-for="JenisCuti_Id">
+                    <option>Choose Division</option>
+                    @foreach (var jenis in (IEnumerable<JenisCuti>)ViewData["Categories"])
+                    {
+                        <option value=@jenis.Id>@jenis.Nama</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanggalMulai" class="control-label"></label>
+                <input asp-for="TanggalMulai" class="form-control" type="date" class="form-control datepicker" />
+                <span asp-validation-for="TanggalMulai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TanggalAkhir" class="control-label"></label>
+                <input asp-for="TanggalAkhir" class="form-control" type="date" class="form-control datepicker" />
+                <span asp-validation-for="TanggalAkhir" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Keterangan" class="control-label"></label>
+                <input asp-for="Keterangan" class="form-control" />
+                <span asp-validation-for="Keterangan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
