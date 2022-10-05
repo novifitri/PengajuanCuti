@@ -1,12 +1,13 @@
-﻿using PengajuanCuti.Context;
-using PengajuanCuti.Models;
-using PengajuanCuti.Repositories.Interface;
+﻿using API.Context;
+using API.Models;
+using API.Repositories.Interface;
+using API.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PengajuanCuti.Repositories.Data
+namespace API.Repositories.Data
 {
     public class DivisiRepository : IDivisiRepository
     {

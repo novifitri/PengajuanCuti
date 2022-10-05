@@ -9,5 +9,8 @@ namespace API.Repositories.Interface
     interface IAccountRepository
     {
         ResponseLogin Login(LoginVM login);
+        int Register(RegisterVM register);
+        int ChangePassword(ChangePasswordVM changePassword);
+        int ForgetPassword(ForgetPWVM forget);
     }
 }
